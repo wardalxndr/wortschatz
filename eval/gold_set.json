@@ -1,0 +1,22 @@
+[
+  {"question": "apple", "expected_id": "apfel"},
+  {"question": "Apfel", "expected_id": "apfel"},
+  {"question": "to arrive", "expected_id": "ankommen"},
+  {"question": "ankommen", "expected_id": "ankommen"},
+  {"question": "glove", "expected_id": "handschuh"},
+  {"question": "Handschuh", "expected_id": "handschuh"},
+  {"question": "station", "expected_id": "bahnhof"},
+  {"question": "how are you", "expected_id": "wie-gehts"},
+  {"question": "bread", "expected_id": "brot"},
+  {"question": "to eat", "expected_id": "essen-verb"},
+  {"question": "hospital", "expected_id": "krankenhaus"},
+  {"question": "thank you", "expected_id": "danke"},
+  {"question": "weekend", "expected_id": "wochenende"},
+  {"question": "birthday", "expected_id": "geburtstag"},
+  {"question": "to understand", "expected_id": "verstehen"},
+  {"question": "love", "expected_id": "liebe"},
+  {"question": "water", "expected_id": "wasser"},
+  {"question": "book", "expected_id": "buch"},
+  {"question": "dog", "expected_id": "hund"},
+  {"question": "house", "expected_id": "haus"}
+]
