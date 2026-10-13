@@ -8,6 +8,7 @@ feedback logging. Run from repo root: streamlit run app/app.py
 
 import csv
 import os
+import random
 import sys
 import time
 from datetime import datetime, timezone
@@ -86,6 +87,11 @@ st.markdown(
         border-radius: 999px; padding: 3px 12px; margin: 2px 4px 2px 0;
         font-family: 'JetBrains Mono', monospace; font-size: 13px;
     }
+    .umlaut { color: #a8a29e; font-weight: 400; font-size: 0.55em; }
+    .tricolor {
+        height: 5px; border-radius: 999px; margin: 10px 0 4px 0;
+        background: linear-gradient(90deg, #1c1917 0 33%, #dd0000 33% 66%, #ffce00 66% 100%);
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -99,15 +105,21 @@ with top_right:
     st.markdown("<span style='color:#16a34a; font-weight:700;'>● Online</span>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
-st.title("WortSchatz")
+st.markdown("<h1 style='margin-bottom:0;'>WortSchatz <span class='umlaut'>(ä ö ü ß)</span></h1>", unsafe_allow_html=True)
+st.markdown("<div class='tricolor'></div>", unsafe_allow_html=True)
 st.caption("Search English or German, inspect gender and plurals, split compound words, get grammar explanations tuned to your CEFR level.")
 st.caption(f"📚 {len(WORDS)} seed words · 🔗 compound splitter · 🎚️ CEFR-aware explanations")
 
 level = st.selectbox("My CEFR level (for grammar explanations)", ["A1", "A2", "B1", "B2", "C1"], index=0)
 query = st.text_input("Search", placeholder="e.g.: apple, Handschuh, Donaudampfschifffahrt", key="q_input", label_visibility="collapsed")
 
-if st.button("🔍 Search", type="primary", use_container_width=True):
+search_col, dice_col = st.columns([4, 1])
+if search_col.button("🔍 Search", type="primary", use_container_width=True):
     st.session_state["ran"] = query
+if dice_col.button("🎲", use_container_width=True, help="Random word"):
+    lucky = random.choice(WORDS)["de"]
+    st.session_state["q_input"] = lucky
+    st.session_state["ran"] = lucky
 
 st.caption("Try:")
 pill_cols = st.columns(len(EXAMPLES))
